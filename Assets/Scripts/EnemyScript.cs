@@ -45,11 +45,9 @@ public class EnemyScript : MonoBehaviour {
 
 	void MoveForward() {
 		_transform.position += _transform.forward * speed * Time.deltaTime;
-//		moveDir   = moveDir * speed * Time.deltaTime;
 	}
 
 	void MoveChange() {
-//		_transform.position
 		switch(randMove) {
 		case 0:
 			break;
@@ -65,7 +63,7 @@ public class EnemyScript : MonoBehaviour {
 	}
 
 	void DestroyOutRange() {
-		if (_transform.position.x < -19)
+		if (_transform.position.x < -19*2.5)
 			Destroy(gameObject);
 	}
 }

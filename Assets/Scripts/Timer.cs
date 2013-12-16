@@ -6,9 +6,11 @@ public class Timer : MonoBehaviour {
 	public bool  running;
 	public float curTime;
 
+	public GameObject go;
 	public TextMesh _textmesh;
 	float    _startTime;
 	float    _endTime;
+	public static int score;
 
 	void Start() {
 		_startTime = 0;
@@ -18,16 +20,11 @@ public class Timer : MonoBehaviour {
 	}
 	
 	void Update() {
-//		if (Input.GetKey(KeyCode.A))
-//			StartTimer();
-//		else if (Input.GetKey(KeyCode.S))
-//			StopTimer();
-
 		if (running) {
 			curTime = Time.time - _startTime;
-			_textmesh.text = curTime.ToString();
+			score = (int)(curTime*100f);
+			_textmesh.text = "Score: " + score.ToString();
 		}
-
 	}
 
 	void StartTimer() {
@@ -40,7 +37,12 @@ public class Timer : MonoBehaviour {
 			_endTime = Time.time;
 			running = false;
 			curTime = _endTime - _startTime;
-			_textmesh.text = curTime.ToString();
+			score = (int)(curTime*100f);
+			_textmesh.text = "Score: " + score.ToString();
+
+			if (go != null) go.SetActive(true);
+
+			gameObject.SetActive(false);
 		}
 	}
 }

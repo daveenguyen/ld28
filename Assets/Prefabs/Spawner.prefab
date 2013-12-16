@@ -38,9 +38,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96f855197e434b50834c3f10cceb1d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 11400000, guid: 7d82444aabb504d16a16e389544f1799, type: 2}
+  timer: {fileID: 0}
   enemy: {fileID: 100000, guid: 7dfe1c92177e542b8beb2bc0e42f1104, type: 2}
   spawnChance: 0
+  spawnAmt: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

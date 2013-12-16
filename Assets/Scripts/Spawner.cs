@@ -32,17 +32,11 @@ public class Spawner : MonoBehaviour {
 		}
 		else if (!timer.running && spawning) {
 			spawning = false;
-//			spawning = true;
 		}
 
 		spawnAmt    = (int)(timer.curTime)/5 + 1;
 		spawnChance = ((int)(timer.curTime)/1) * 0.01f + 0.30f;
 	}
-//	void Update () {
-//		if (timer.running) {
-////			SpawnEnemy();
-//		}
-//	}
 
 	IEnumerator SpawnEnemy() {
 		while (spawning) {
@@ -51,6 +45,12 @@ public class Spawner : MonoBehaviour {
 					go = Instantiate (enemy, _transform.position, _transform.rotation) as GameObject;
 					es = go.GetComponent<EnemyScript>();
 					es.timer = timer;	
+
+					float randR = UnityEngine.Random.Range(0.0f,1f);
+					float randG = UnityEngine.Random.Range(0.0f,1f);
+					float randB = UnityEngine.Random.Range(0.0f,1f);
+
+					go.GetComponent<MeshRenderer>().material.color = new Color(randR,randG,randB);
 				}
 			}
 			yield return new WaitForSeconds(UnityEngine.Random.Range(0.05f, .7f));

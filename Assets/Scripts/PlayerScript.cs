@@ -5,18 +5,16 @@ public class PlayerScript : MonoBehaviour {
 
 	public float speed = 15f;
 	
-	const int MAX_X = 17;
+	const int MAX_X = 15;
 	const int MAX_Z = 8;
 
 	public GameObject bomb;
-
-	int bombCount;
 
 	Transform _transform;
 	Vector3 moveDir;
 	// Use this for initialization
 	void Start () {
-		bombCount = 1;
+		BombScript.bombCount = 1;
 		_transform = transform;
 		moveDir = Vector3.zero;
 	}
@@ -41,13 +39,15 @@ public class PlayerScript : MonoBehaviour {
 		Debug.Log(other.tag);
 		if (other.tag == "Enemy") {
 			speed = 0;
+			HealthScript.getHurt = true;
+			Destroy(gameObject);
 		}
 	}
 
 	void DeployBomb() {
-		if (bombCount > 0) {
+		if (BombScript.bombCount > 0) {
 			Instantiate(bomb, _transform.position, Quaternion.identity);
-			bombCount--;
+			BombScript.bombCount--;
 		}
 	}
 }
